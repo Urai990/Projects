@@ -13,6 +13,7 @@ public class Sbob extends Actor
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     private int gold = 0;
+    private int crabTrap = 0;
     public void act(){
         // Add your action code here.
             if (Greenfoot.isKeyDown("right")){
@@ -24,7 +25,13 @@ public class Sbob extends Actor
             if(canCatchGold()){
                 CatchGold();
                 gold = gold + 1;
+                getWorld().showText("Number of points: "+ Integer.toString(gold),400,550);
+                
             }
+            if (canCrabTrapped()){
+                CrabTrap();
+            }
+    
     }
     private boolean canCatchGold(){
         Actor gold = getOneObjectAtOffset(0,0,PirateGold.class);
@@ -43,8 +50,25 @@ public class Sbob extends Actor
     
         }
     }
+    private boolean canCrabTrapped(){
+        Actor crabTrap = getOneObjectAtOffset(0,0,CrabTrap.class);
+        if(crabTrap != null){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    private void CrabTrap(){
+       Actor crabTrap = getOneObjectAtOffset(0,0,CrabTrap.class);
+        if (crabTrap != null){
+            Greenfoot.playSound("bonk.wav");
+            getWorld().removeObject(crabTrap);
+            getWorld().showText("GAME OVER"+ Integer.toString(gold),400,300);
+            Greenfoot.stop();
+        }
+    }
 }
-
 
 
 
