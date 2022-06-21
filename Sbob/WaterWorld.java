@@ -30,7 +30,7 @@ public class WaterWorld extends World
         if (Greenfoot.getRandomNumber(120)==5){
             dropGold();
         }
-        if (Greenfoot.getRandomNumber(720)==20){
+        if (Greenfoot.getRandomNumber(500)==20){
             dropTrap();
         }
     }
