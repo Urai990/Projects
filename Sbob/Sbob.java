@@ -38,7 +38,7 @@ public class Sbob extends Actor
     private void CatchGold(){
         Actor gold = getOneObjectAtOffset(0,0,PirateGold.class);
         if (gold != null){
-            Greenfoot.playSound("/Users/uttararai/Sbob/cha_ching.wav");
+            Greenfoot.playSound("cha_ching.wav");
             getWorld().removeObject(gold);
     
         }
