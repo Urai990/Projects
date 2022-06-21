@@ -16,21 +16,22 @@ public class Sbob extends Actor
     private int crabTrap = 0;
     public void act(){
         // Add your action code here.
-            if (Greenfoot.isKeyDown("right")){
-                setLocation(getX()+1, getY());
-            }
-            if (Greenfoot.isKeyDown("left")){
-                setLocation(getX()-1, getY());
-            }
-            if(canCatchGold()){
-                CatchGold();
-                gold = gold + 1;
-                getWorld().showText("Number of points: "+ Integer.toString(gold),400,550);
+        getWorld().showText("Number of points: "+ Integer.toString(gold),400,550);
+        if (Greenfoot.isKeyDown("right")){
+            setLocation(getX()+1, getY());
+        }
+        if (Greenfoot.isKeyDown("left")){
+            setLocation(getX()-1, getY());
+        }
+        if(canCatchGold()){
+            CatchGold();
+            gold = gold + 1;
+            getWorld().showText("Number of points: "+ Integer.toString(gold),400,550);
                 
-            }
-            if (canCrabTrapped()){
-                CrabTrap();
-            }
+        }
+        if (canCrabTrapped()){
+            CrabTrap();
+        }
     
     }
     private boolean canCatchGold(){
@@ -64,7 +65,7 @@ public class Sbob extends Actor
         if (crabTrap != null){
             Greenfoot.playSound("bonk.wav");
             getWorld().removeObject(crabTrap);
-            getWorld().showText("GAME OVER"+ Integer.toString(gold),400,300);
+            getWorld().showText("GAME OVER",400,300);
             Greenfoot.stop();
         }
     }
